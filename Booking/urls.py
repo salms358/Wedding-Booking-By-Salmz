@@ -2,8 +2,13 @@
 from django.urls import path
 from . import views
 
+app_name = 'Booking'
 urlpatterns = [
-    path('book/', views.book_venue, name='book_venue'),
-    path('booking_list/', views.booking_list, name='booking_list'),
-    # Add other URLs as needed
+    path('',views.index_view, name="index"),
+    path('about_us/', views.about_us, name='about_us'),
+    path('create_booking/', views.create_booking, name='create_booking'),
+    path('register/', views.register, name='register')
+
+ 
+
 ]

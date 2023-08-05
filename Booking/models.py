@@ -10,13 +10,13 @@ class Location(models.Model):
 
 
 class Booking(models.Model):
-    venue = models.ForeignKey(Location, on_delete=models.CASCADE)
+    venue = models.ForeignKey(Venue, on_delete=models.CASCADE)
+    date = models.DateField()
     customer_name = models.CharField(max_length=100)
     email = models.EmailField()
-    phone_number = models.CharField(max_length=15)
-    date = models.DateTimeField()
-    table_count = models.PositiveIntegerField(default=1)
-    cancelled = models.BooleanField(default=False)
+    phone_number = models.CharField(max_length=20)
+    # Other fields of the Booking model
+
 
 
 

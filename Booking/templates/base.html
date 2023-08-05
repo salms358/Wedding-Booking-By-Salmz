@@ -6,15 +6,16 @@
     <title>Wedding Booking System</title>
 </head>
 <body>
+    <h1>Welcome to wedding booking by salmz</h1>
     <!-- Header -->
     <header>
         <!-- Navigation bar -->
         <nav>
             <!-- Navigation links -->
             <ul>
-                <li><a href="about.html"></a>About Us!</li>
-                <li><a href="create_booking.html"></a>Click here to create a booking!</li>
-                <li><a href="register.html"></a>Register an account with us!</li>
+                <li><a href="{% url 'Booking:about_us' %}">About Us!</a></li>
+                <li><a href="{% url 'Booking:create_booking' %}">Create Booking</a></li>
+                <li><a href="{% url 'Booking:register' %}">Register an account with us!</a></li>
 
             </ul>
         </nav>
