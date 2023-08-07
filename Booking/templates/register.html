@@ -1,6 +1,34 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h2>Register an account with Us!</h2>
-    <!-- Booking form goes here -->
+
+<div class="w-50 mx-auto py-5">
+    <form class="row g-3" method="POST">
+        {% csrf_token %}
+
+        <div class="col-12">
+            <label for="f_name">First Name</label>
+            <input type="text" class="form-control" id="f_name" name="f_name">
+        </div>
+
+        <div class="col-12">
+            <label for="l_name">Last Name</label>
+            <input type="text" class="form-control" id="l_name" name="l_name">
+        </div>
+
+        <div class="col-12 mx-auto">
+            <label for="phone_number">Telephone Number</label>
+            <input type="number" class="form-control" id="phone_number" name="phone_number" minlength="11" maxlength="11">
+        </div>
+
+        <div class="col-12 text-center">
+            <a href="/"> <button type="submit" class="btn custom-red text-white">Create Profile</button>
+            </a>
+        </div>
+    </form>
+</div>
+
+
+
+
 {% endblock %}
