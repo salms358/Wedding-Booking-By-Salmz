@@ -1,0 +1,22 @@
+{ % extends base.html %}
+
+
+{% block content %}
+
+<div class="successful">
+    <table>
+        {booking_form}
+
+    </table>
+    <a href="{% url 'Booking:delete_booking' booking_id=booking.id %}">Delete</a>
+
+</div>
+
+
+
+
+
+
+
+
+{% endcontent %}
