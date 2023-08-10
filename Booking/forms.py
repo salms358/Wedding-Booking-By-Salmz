@@ -23,21 +23,30 @@ def validate_date(date):
             code='invalid_date'
         )
 
+VENUE_CHOICES = [
+    ('Venue1', 'Nawaabs Greenford'),
+    ('Venue2', 'Slough Banqueting Hall'),
+    ('Venue3', 'Hounslow Banqueting Hall'),
+]
 
 class BookingForm(forms.ModelForm):
+    venue = forms.ChoiceField(choices=VENUE_CHOICES, widget=forms.Select(attrs={'class': 'form-control'}))
+    booking_date = forms.DateField(
+        label=_('Booking Date'),
+        widget=forms.DateInput(attrs={'type': 'date'}),
+        validators=[validate_date],
+    )
+
     class Meta:
         model = Booking
-        fields = ['venue', 'customer_name','booking_date','booking_time', 'email', 'phone_number', 'theme']
-        start_date = forms.DateField(
-            label=_('Start Date'),
-            widget=forms.DateInput(attrs={'type': 'date'}),
-            validators=[validate_date],
-    )
+        fields = ['venue', 'customer_name', 'booking_date', 'booking_time', 'email', 'phone_number', 'theme']
+
 
 class RegisteringAccount(forms.ModelForm):
     class Meta:
         model = Register
-        fields = ['user','first_name','last_name','phone_number']
+        fields = ['user', 'first_name', 'last_name', 'phone_number']
+
 
 
         
