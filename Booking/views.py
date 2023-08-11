@@ -5,7 +5,8 @@ from django.views import View
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from .forms import BookingForm
-from .models import Register
+from .models import Register, Booking
+
 
 class RegisterView(View):
     template_name = "register.html"
@@ -33,7 +34,10 @@ class CreateProfileView(View):
         return render(request, self.template_name, {'form': form})
 
     def post(self, request, *args, **kwargs):
-        form = BookingFormForm(request.POST)
+        """
+        Post method for creating profile
+        """
+        form = BookingForm(request.POST)
         if form.is_valid():
             user_profile = form.save(commit=False)
             user_profile.user = request.user 
@@ -58,8 +62,11 @@ def create_booking(request):
     if request.method == 'POST':
         booking_form = BookingForm(request.POST)
         if booking_form.is_valid():
-            booking = booking_form.save()
-            return redirect('view_booking', booking_id=booking.id)
+            booking = booking_form.save(commit=False)
+            # Save the booking object with the user
+            booking.user = request.user
+            booking.save()
+            return redirect('Booking:view_booking')  # Correct view name here
     else:
         booking_form = BookingForm()
 
@@ -68,8 +75,7 @@ def create_booking(request):
 @login_required
 def view_booking(request):
     bookings = Booking.objects.filter(user=request.user)
-    return render(request, 'Booking/view_booking.html', {'bookings': bookings})
-
+    return render(request, 'Booking:view_booking') 
 
 class EditBookingView(View):
     template_name = "edit_booking.html"

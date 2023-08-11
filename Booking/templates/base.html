@@ -18,10 +18,14 @@
             <ul>
                 <li><a href="{% url 'Booking:index' %}">Home</a></li>
                 <li><a href="{% url 'Booking:about_us' %}">About Us!</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'Booking:view_booking' %}">View Bookings</a></li>
                 <li><a href="{% url 'Booking:create_booking' %}">Create Booking</a></li>
-                <!--<li><a href="{% url 'Booking:register' %}">Register</a></li>-->
-                <li><a href="{% url 'account_login' %}">Login</a></li>
                 <li><a href="{% url 'account_logout' %}">Logout</a></li>
+                {% else %}
+                <li><a href="{% url 'account_login' %}">Login</a></li>
+                {% endif %}
+                <!--<li><a href="{% url 'Booking:register' %}">Register</a></li>-->
 
 
 

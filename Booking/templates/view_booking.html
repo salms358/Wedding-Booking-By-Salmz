@@ -3,14 +3,39 @@
 
 {% block content %}
 
-<div class="successful">
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>My Bookings</h1>
+    
     <table>
-        {booking_form}
-
+        <thead>
+            <tr>
+                <th>Venue</th>
+                <th>Customer Name</th>
+                <th>Booking Date</th>
+                <th>Booking Time</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Theme</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for booking in bookings %}
+                <tr>
+                    <td>{{ booking.venue }}</td>
+                    <td>{{ booking.customer_name }}</td>
+                    <td>{{ booking.booking_date }}</td>
+                    <td>{{ booking.booking_time }}</td>
+                    <td>{{ booking.email }}</td>
+                    <td>{{ booking.phone_number }}</td>
+                    <td>{{ booking.theme }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
     </table>
-    <a href="{% url 'Booking:delete_booking' booking_id=booking.id %}">Delete</a>
+{% endblock %}
 
-</div>
 
 
 

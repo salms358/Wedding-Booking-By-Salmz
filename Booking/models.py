@@ -10,7 +10,8 @@ class Location(models.Model):
 
 
 class Booking(models.Model):
-    venue = models.ForeignKey(Venue, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    venue = models.CharField(max_length=100, blank=False)
     customer_name = models.CharField(max_length=100)
     email = models.EmailField()
     booking_date = models.DateField(auto_now=False)
