@@ -6,6 +6,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from .forms import BookingForm
 from .models import Register, Booking
+from django.urls import reverse_lazy, reverse
+from django.views.generic import TemplateView, DeleteView
 
 
 class RegisterView(View):
@@ -77,29 +79,26 @@ def view_booking(request):
     bookings = Booking.objects.filter(user=request.user)
     return render(request,'view_booking.html', {'bookings':bookings})
 
-class EditBookingView(View):
-    template_name = "edit_booking.html"
+class update_booking(View):
+    template_name = "update_booking.html"
 
     def get(self, request, booking_id, *args, **kwargs):
         booking = get_object_or_404(Booking, pk=booking_id)
         form = BookingForm(instance=booking)
-        return render(request, self.template_name, {'form': form, 'booking': booking})
+        return render(request,"update_booking.html",{'form': form, 'booking': booking})
 
 
-def post(self, request, *args, **kwargs):
-        form = BookingFormForm(request.POST)
-        if form.is_valid():
-            user_profile = form.save(commit=False)
-            user_profile.user = request.user  # Set the user for the profile
-            user_profile.save()
-            return redirect('home')  # Replace 'home' with the name of your home view
-        return render(request, self.template_name, {'form': form})
+    def post(self, request, *args, **kwargs):
+            form = BookingForm(request.POST)
+            if form.is_valid():
+                user_profile = form.save(commit=False)
+                user_profile.user = request.user  # Set the user for the profile
+                user_profile.save()
+            return render(request, 'base.html', {'form': form})
 
-
-def delete_booking(request, booking_id):
-    booking = get_object_or_404(Booking, id=booking_id)
-    if request.method == 'POST':
-        booking.delete()
-        return redirect('index')
+class D_booking(DeleteView):
+    model = Booking
+    pk_url_kwarg = "booking_id"
+    success_url = reverse_lazy("Booking:index")  # Redirect to the homepage
+    template_name = "delete_booking.html"
     
-    return render(request, 'delete_booking.html' ,{'booking': booking})

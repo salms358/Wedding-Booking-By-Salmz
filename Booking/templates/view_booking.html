@@ -14,6 +14,12 @@
             <strong>Booking Time:</strong> {{ booking.booking_time }}<br>
             <strong>Phone Number:</strong> {{ booking.phone_number }}<br>
             <strong>Theme:</strong> {{ booking.theme}}<br>
+
+            
+            <a href="{% url 'Booking:update_booking' booking.pk %}">Update Booking</a>
+
+            
+            <a href="{% url 'Booking:delete_booking' booking.pk %}">Delete Booking</a>
         </li>
         {% endfor %}
     </ul>

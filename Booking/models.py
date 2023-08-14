@@ -1,7 +1,11 @@
 # models.py
+
 from django.db import models
 from django.contrib.auth.models import User
 from .venue import Venue
+
+
+
 class Location(models.Model):
     name = models.CharField(max_length=100)
     street_address = models.CharField(max_length=100)
@@ -25,7 +29,6 @@ class Register(models.Model):
     first_name = models.CharField(max_length=150)
     last_name = models.CharField(max_length=150)
     phone_number = models.CharField(max_length=11)
-
 
 
 

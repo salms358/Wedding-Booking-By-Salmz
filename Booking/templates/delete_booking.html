@@ -1,12 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h2>Delete Booking</h2>
-  <p>Are you sure you want to delete this booking?</p>
-
-  <form method="post">
-    {% csrf_token %}
-    <input type="submit" value="Confirm Delete">
-    <a href="{% url 'Booking:view_booking' booking_id=booking.id %}">Cancel</a>
-  </form>
+    <h1>Delete Booking</h1>
+    <p>Are you sure you want to delete this booking?</p>
+    
+    <strong>Venue:</strong> {{ booking.venue }}<br>
+    <strong>Customer Name:</strong> {{ booking.customer_name }}<br>
+    <strong>Email:</strong> {{ booking.email }}<br>
+    <strong>Booking Date:</strong> {{ booking.booking_date }}<br>
+    <strong>Booking Time:</strong> {{ booking.booking_time }}<br>
+    <strong>Phone Number:</strong> {{ booking.phone_number }}<br>
+    <strong>Theme:</strong> {{ booking.theme }}<br>
+    
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Confirm Delete</button>
+        <a href="{% url 'Booking:view_booking' %}">Cancel</a>
+    </form>
 {% endblock %}
+
