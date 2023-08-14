@@ -66,7 +66,7 @@ def create_booking(request):
             # Save the booking object with the user
             booking.user = request.user
             booking.save()
-            return redirect('Booking:view_booking')  # Correct view name here
+            return redirect('Booking:view_booking')
     else:
         booking_form = BookingForm()
 
@@ -75,7 +75,7 @@ def create_booking(request):
 @login_required
 def view_booking(request):
     bookings = Booking.objects.filter(user=request.user)
-    return render(request,'view_booking.html') 
+    return render(request,'view_booking.html', {'bookings':bookings})
 
 class EditBookingView(View):
     template_name = "edit_booking.html"
@@ -102,4 +102,4 @@ def delete_booking(request, booking_id):
         booking.delete()
         return redirect('index')
     
-    return render(request, 'delete_booking.html', {'booking': booking})
+    return render(request, 'delete_booking.html' ,{'booking': booking})

@@ -2,33 +2,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>My Bookings</h1>
-    
-    <table>
-        <thead>
-            <tr>
-                <th>Venue</th>
-                <th>Customer Name</th>
-                <th>Booking Date</th>
-                <th>Booking Time</th>
-                <th>Email</th>
-                <th>Phone Number</th>
-                <th>Theme</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for booking in bookings %}
-                <tr>
-                    <td>{{ booking.venue }}</td>
-                    <td>{{ booking.customer_name }}</td>
-                    <td>{{ booking.booking_date }}</td>
-                    <td>{{ booking.booking_time }}</td>
-                    <td>{{ booking.email }}</td>
-                    <td>{{ booking.phone_number }}</td>
-                    <td>{{ booking.theme }}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <h1>My Bookings:</h1>
+
+    <ul>
+        {% for booking in bookings %}
+        <li>
+            <strong>Venue:</strong> {{ booking.venue}}<br>
+            <strong>Customer Name:</strong> {{ booking.customer_name }}<br>
+            <strong>Email:</strong> {{ booking.email}}<br>
+            <strong>Booking Date:</strong> {{ booking.booking_date }}<br>
+            <strong>Booking Time:</strong> {{ booking.booking_time }}<br>
+            <strong>Phone Number:</strong> {{ booking.phone_number }}<br>
+            <strong>Theme:</strong> {{ booking.theme}}<br>
+        </li>
+        {% endfor %}
+    </ul>
 {% endblock %}
+
 
