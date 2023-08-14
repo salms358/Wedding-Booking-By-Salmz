@@ -75,7 +75,7 @@ def create_booking(request):
 @login_required
 def view_booking(request):
     bookings = Booking.objects.filter(user=request.user)
-    return render(request, 'Booking:view_booking') 
+    return render(request,'view_booking.html') 
 
 class EditBookingView(View):
     template_name = "edit_booking.html"
