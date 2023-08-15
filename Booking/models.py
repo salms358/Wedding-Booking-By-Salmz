@@ -3,6 +3,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from .venue import Venue
+from django.core.validators import MinValueValidator, MaxValueValidator
+
 
 
 
@@ -22,6 +24,7 @@ class Booking(models.Model):
     booking_time = models.TimeField(auto_now=False)
     phone_number = models.CharField(max_length=20)
     theme = models.CharField(max_length=100, blank=True)
+    group_size = models.PositiveIntegerField(default=100, validators=[MinValueValidator(100), MaxValueValidator(500)])
     # Other fields of the Booking model
 class Register(models.Model):
     user = models.OneToOneField(
