@@ -1,10 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
     <h1>Edit Booking</h1>
+
     <form method="post">
         {% csrf_token %}
+        {% if updated %}
+            <p>Updated successfully!</p>
+        {% endif %}
         {{ form.as_p }}
         <button type="submit">Update Booking</button>
     </form>
+    
 {% endblock %}

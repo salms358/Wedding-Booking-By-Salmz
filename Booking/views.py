@@ -94,7 +94,16 @@ class update_booking(View):
                 user_profile = form.save(commit=False)
                 user_profile.user = request.user  # Set the user for the profile
                 user_profile.save()
-            return render(request, 'base.html', {'form': form})
+            return render(request, 'update_booking.html', {'form': form})
+            if form.is_valid():
+                booking_date = form.cleaned_data.get('booking_date')
+
+                if booking_date < timezone.now().date():
+                    form.add_error('booking_date', 'Invalid date. Please select a future date.')
+                else:
+                    form.save()
+                    return redirect('view_bookings')
+        
 
 class D_booking(DeleteView):
     model = Booking
