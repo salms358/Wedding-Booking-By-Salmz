@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="banner">
+        <h1>Welcome to Our Wedding Booking Platform</h1>
+        <p>Book your dream wedding with us!</p>
+
+
+        <a href="{% url 'Booking:create_booking' %}" class="btn">Book Now</a>
+    </div>
+    
+    <section class="services">
+        <div class="service">
+            <h2>Exquisite Venues</h2>
+            <p>Choose from a variety of stunning venues for your special day.</p>
+        </div>
+
+
+        <div class="service">
+            <h2>Professional Planning</h2>
+            <p>Our expert planners will ensure every detail is perfect.</p>
+        </div>
+
+
+        <div class="service">
+            <h2>Custom Themes</h2>
+            <p>Create a wedding that reflects your unique style and taste.</p>
+        </div>
+    </section>
+    <footer>
+        
+    </footer>
+{% endblock %}

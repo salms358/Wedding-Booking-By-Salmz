@@ -47,8 +47,18 @@ class CreateProfileView(View):
             return redirect('index')  
             return render(request, self.template_name, {'form': form})
         
-def index_view(request):
-    return render(request, 'base.html')
+class HomeView(TemplateView):
+    template_name = "index.html"
+
+    def get(self, request, *args, **kwargs):
+        return render(
+            request,
+            "index.html",
+            {
+                "home_active": "custom-red",
+            }
+        )
+
 
 def about_us(request):
     return render(request, 'about_us.html')

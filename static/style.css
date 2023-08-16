@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&family=Roboto:wght@300&display=swap');
+
+
 * {
     margin: 0;
     padding: 0;
@@ -5,25 +8,95 @@
     box-sizing: border-box;
     overflow-x: visible;
 }
-header {
-background-color: rgba(170, 163, 41, 0.271);
+/*Ensures that the font and colour of the font remain the same throughout the website*/
+body {
+    font-family: lato, sans-serif;
+    font-weight: 200;
+    color:rgba(36, 89, 162, 0.847);
+    overflow-x: hidden;
+    
+   
 }
 
-.nav-bar {
-    width: 100%;
-    font-family: arial;
-    font-size: 50px;
-    line-height: 55px;
-    top: 0;
-
+/* Add this CSS to your style.css file */
+.nav_bar {
+    display: flex; /* Use flexbox to arrange items horizontally */
+    justify-content: space-between; /* Space out items evenly */
+    align-items: center; /* Vertically align items */
+    padding: 10px 20px; /* Add padding for spacing */
+    background-color: #333; /* Set the background color */
+    color: white; /* Set the text color */
 }
+
+.nav_bar ul {
+    display: flex; /* Use flexbox for the list */
+    list-style: none; /* Remove default list styles */
+    margin: 0;
+    padding: 0;
+}
+
+.nav_bar li {
+    margin-right: 20px; /* Add space between list items */
+}
+
+.nav_bar a {
+    color: white; /* Set the link color */
+    text-decoration: none; /* Remove underlines from links */
+    padding: 10px; /* Add padding around links */
+}
+
 #logo {
-    float: left;
-    font-size: x-large;
-    margin-left: 30px;
-    display: block;
-    text-decoration: none;
-    width: 100%;
-    height: 60px;
-    color:darkslategray;
+    width: 100px; /* Set the logo width */
+    height: 100px; /* Set the logo height */
+    background-color: #f2f2f2; /* Set a background color for the logo */
+    /* Add your logo image or styling here */
+}
+.logout-container {
+    text-align: center;
+    padding: 20px;
+}
+
+/* styles.css */
+
+.logout-container {
+    text-align: center;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f5f5f5;
+    max-width: 400px;
+}
+
+.logout-heading {
+    font-size: 24px;
+    color: #333;
+}
+
+.logout-text {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #666;
+}
+
+.logout-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #ff009d;
+    color: #a01919;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.logout-button:hover {
+    background-color: #0056b3;
+}
+
+.services {
+    padding: 40px 0; /* Adjust the values as needed */
+}
+
+.services {
+    padding-bottom:10px;
 }

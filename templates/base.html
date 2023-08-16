@@ -1,0 +1,52 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>Wedding Booking System</title>
+</head>
+<body>
+    
+    <!-- Header -->
+    <header>
+        <!-- Navigation bar -->
+        <nav id="menu" class="nav_bar">
+            <a href="base.html" class="logo">
+                
+            </a>
+            <!-- Navigation links -->
+            <div class="container">
+                <ul class="fonts">
+
+                    <li><a href="{% url 'Booking:index' %}">Home</a></li>
+                    <li><a href="{% url 'Booking:about_us' %}">About Us!</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'Booking:view_booking' %}">View Bookings</a></li>
+                    <li><a href="{% url 'Booking:create_booking' %}">Create Booking</a></li>
+                    <li><a href="{% url 'account_logout' %}">Logout</a></li>
+                    {% else %}
+                    <li><a href="{% url 'account_login' %}">Login</a></li>
+                    {% endif %}
+                
+                    
+
+
+
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Content goes here -->
+    {% block content %}
+    {% endblock %}
+
+    <!-- Footer -->
+    <footer>
+        <!-- Footer content -->
+    </footer>
+</body>
+</html>
