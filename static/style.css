@@ -100,3 +100,42 @@ body {
 .services {
     padding-bottom:10px;
 }
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn:hover {
+    background-color: #0056b3;
+  }
+  .booking_formz {
+    flex-direction: row;
+    margin-bottom: 10%;
+  }
+ .hero-image {
+    width:200px;
+    height:200px;
+    border-radius: 10px;
+ }
+ .hounslow_hall {
+    width:200px;
+    height:200px;
+    border-radius:10px;
+ }
+ .slough_hall {
+    width:200px;
+    border-radius:10px;
+ }
+ 
+.venues {
+    display:flex;
+    flex-direction: row;
+}
+  

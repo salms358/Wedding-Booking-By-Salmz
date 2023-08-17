@@ -8,6 +8,11 @@ from .forms import BookingForm
 from .models import Register, Booking
 from django.urls import reverse_lazy, reverse
 from django.views.generic import TemplateView, DeleteView
+from allauth.account.views import LogoutView
+from .email_utils import send_verification_email, send_custom_email
+from allauth.account.models import EmailAddress
+from allauth.account.utils import send_email_confirmation
+
 
 
 class RegisterView(View):
@@ -67,6 +72,8 @@ def register(request):
     return render(request, 'register.html')
 def account_login(request):
     return render(request, 'login.html')
+class CustomLogoutView(LogoutView):
+    template_name = 'registration/logout.html'
 
 
 # CRUD functionality
@@ -120,4 +127,13 @@ class D_booking(DeleteView):
     pk_url_kwarg = "booking_id"
     success_url = reverse_lazy("Booking:index")  # Redirect to the homepage
     template_name = "delete_booking.html"
-    
+
+
+
+
+
+def some_view(request):
+    # ...
+    send_verification_email(request, user)
+def send_verification_email(request, user):
+    email_address = EmailAddress.objects.get(user=user, primary=True)
