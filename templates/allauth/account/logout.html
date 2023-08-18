@@ -9,7 +9,6 @@
   <div class="row">
     <div class="col-md-8 mt-3 offset-md-2">
       <h1>{% trans "Sign Out" %}</h1>
-
       <p>{% trans 'Do you want to sign out?' %}</p>
     </div>
   </div>
@@ -19,12 +18,38 @@
       <form method="post" action="{% url 'account_logout' %}">
         {% csrf_token %}
         {% if redirect_field_value %}
-        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}">
         {% endif %}
         <button class="btn btn-danger" type="submit">{% trans 'Sign Out' %}</button>
       </form>
     </div>
   </div>
 
+  <style>
+    
+    .container {
+      text-align: center;
+    }
 
-  {% endblock %}
+    h1 {
+      color: #333;
+    }
+
+    p {
+      color: #777;
+    }
+
+    /* Customize button styles */
+    .btn-danger {
+      background-color: #dc3545;
+      border-color: #dc3545;
+    }
+
+    .btn-danger:hover {
+      background-color: #c82333;
+      border-color: #bd2130;
+    }
+  </style>
+</div>
+{% endblock %}
+

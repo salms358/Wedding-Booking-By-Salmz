@@ -8,11 +8,11 @@ from .forms import BookingForm
 from .models import Register, Booking
 from django.urls import reverse_lazy, reverse
 from django.views.generic import TemplateView, DeleteView
-from allauth.account.views import LogoutView
+from allauth.account.views import LogoutView, PasswordResetView
 from .email_utils import send_verification_email, send_custom_email
 from allauth.account.models import EmailAddress
 from allauth.account.utils import send_email_confirmation
-
+from django.http import JsonResponse
 
 
 class RegisterView(View):
@@ -129,7 +129,22 @@ class D_booking(DeleteView):
     template_name = "delete_booking.html"
 
 
+class CustomPasswordResetView(PasswordResetView):
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        
+        # Send reset password email using EmailJS
+        template_params = {
+            "to_email": form.cleaned_data["email"],
+            "user_id": "your_user_id",  # Replace with your EmailJS user ID
+            "template_id": "your_template_id",  # Replace with your EmailJS template ID
+            "email_params": {
+                "reset_link": response.context_data["reset_url"],
+            },
+        }
+        emailjs.send("service_h4d0j1w", "your_emailjs_template_id", template_params);
 
+        return JsonResponse({"message": "Password reset email sent."})
 
 
 def some_view(request):
