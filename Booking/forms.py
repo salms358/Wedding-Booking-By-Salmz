@@ -63,9 +63,23 @@ class BookingForm(forms.ModelForm):
         if group_size < 100 or group_size > 500:
             raise forms.ValidationError("Group size must be between 100 and 500.")
         return group_size
+    def clean(self):
+        cleaned_data = super().clean()
+        booking_date = cleaned_data.get('booking_date')
+        booking_time = cleaned_data.get('booking_time')
 
-        
-       
+        # Check for existing bookings on the same date and time
+        existing_bookings = Booking.objects.filter(
+            booking_date=booking_date,
+            booking_time=booking_time
+        )
+
+        if existing_bookings.exists():
+            raise forms.ValidationError('This date and time are already booked.')
+
+        return cleaned_data
+
+
 
 
     class Meta:
