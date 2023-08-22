@@ -101,6 +101,9 @@ class update_booking(View):
 
     def get(self, request, booking_id, *args, **kwargs):
         booking = get_object_or_404(Booking, pk=booking_id)
+        if booking.user.id != self.request.user.id:
+            return redirect('/')
+            
         form = BookingForm(instance=booking)
         return render(request,"update_booking.html",{'form': form, 'booking': booking})
 
@@ -120,7 +123,19 @@ class update_booking(View):
                 else:
                     form.save()
                     return redirect('view_bookings')
-        
+            if not request.user.is_superuser:
+                messages.error(request, 'Sorry, only store owners can do that.')
+                return redirect(reverse('index.html'))
+            if request.method == 'POST':
+                form = BookingForm(request.POST, request.FILES)
+                if form.is_valid():
+                    product = form.save()
+                    messages.success(request, 'Booking successfully created')
+                    return redirect(reverse('index.html'))
+                else:
+                    messages.error(request, 'Failed to create booking')
+            else:
+                form = BookingForm()
 
 class D_booking(DeleteView):
     model = Booking

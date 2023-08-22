@@ -15,13 +15,14 @@
     <header>
         <!-- Navigation bar -->
         <nav id="menu" class="nav_bar">
-            <a href="base.html" class="logo">
                 
-            </a>
+          
             <!-- Navigation links -->
             <div class="container">
                 <ul class="fonts">
-
+                    <a href="{% url 'Booking:index' %}" id="logo">
+                        <h1 src="{% static 'Booking:index' %}" alt="Logo">Wedding Bookingz By Salmz</h1>
+                    </a>
                     <li><a href="{% url 'Booking:index' %}">Home</a></li>
                     <li><a href="{% url 'Booking:about_us' %}">About Us!</a></li>
                     {% if user.is_authenticated %}
