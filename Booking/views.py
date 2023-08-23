@@ -109,33 +109,26 @@ class update_booking(View):
 
 
     def post(self, request, *args, **kwargs):
-            form = BookingForm(request.POST)
-            if form.is_valid():
-                user_profile = form.save(commit=False)
-                user_profile.user = request.user  # Set the user for the profile
-                user_profile.save()
-            return render(request, 'update_booking.html', {'form': form})
+            if not request.user.is_superuser:
+                messages.error(request, 'Sorry, only store owners can do that.')
+                return redirect(reverse('index.html'))
+
+            form = BookingForm(request.POST, request.FILES)
             if form.is_valid():
                 booking_date = form.cleaned_data.get('booking_date')
 
                 if booking_date < timezone.now().date():
                     form.add_error('booking_date', 'Invalid date. Please select a future date.')
                 else:
-                    form.save()
-                    return redirect('view_bookings')
-            if not request.user.is_superuser:
-                messages.error(request, 'Sorry, only store owners can do that.')
-                return redirect(reverse('index.html'))
-            if request.method == 'POST':
-                form = BookingForm(request.POST, request.FILES)
-                if form.is_valid():
-                    product = form.save()
+                    booking = form.save(commit=False)
+                    booking.user = self.request.user
+                    booking.save()
                     messages.success(request, 'Booking successfully created')
                     return redirect(reverse('index.html'))
-                else:
-                    messages.error(request, 'Failed to create booking')
             else:
+                messages.error(request, 'Failedto create booking.')
                 form = BookingForm()
+                return render(request, 'update_booking.html', {'form': form})
 
 class D_booking(DeleteView):
     model = Booking

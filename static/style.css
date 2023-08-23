@@ -8,15 +8,6 @@
     box-sizing: border-box;
     overflow-x: visible;
 }
-.container {
-  width: 100%;
-  min-height: 100vh;
-  padding-left: 8%;
-  padding-right: 8%;
-  box-sizing: border-box;
-  overflow: hidden;
-
-}
 /*Ensures that the font and colour of the font remain the same throughout the website*/
 body {
     font-family: lato, sans-serif;
@@ -35,7 +26,6 @@ body {
   padding: 10px 20px; /* Add padding for spacing */
   background-color: #333; /* Set the background color */
   color: white; /* Set the text color */
-  width: 100%;
 }
 
 .nav_bar ul {
@@ -56,10 +46,10 @@ body {
 }
 
 #logo {
-    font-size: 50px;
-    background-color: #050202; /* Set a background color for the logo */
-    color: rgb(198, 15, 15);
-    font-family: Oswald;
+    width: 100px; /* Set the logo width */
+    height: 100px; /* Set the logo height */
+    background-color: #f2f2f2; /* Set a background color for the logo */
+    /* Add your logo image or styling here */
 }
 
 
@@ -143,7 +133,6 @@ body {
     text-align: left;
     text-align: center;
     padding-top: 90px;
-    
   }
   .footer a {
     font-size: 200%;
@@ -248,55 +237,8 @@ form button {
 
 
 
- /* Default styles for larger screens */
-/* You can define your default styles here */
-
-/* Media query for screens with a maximum width of 768px */
-@media screen and (max-width: 768px) {
-  /* Styles for smaller screens */
-  header {
-      padding: 10px 0;
+  @media (max-width: 768px) {
+    .nav-bar {
+      justify-content: center; /* Center the navigation items */
+    }
   }
-
-  .logo {
-      font-size: 20px;
-  }
-
-  ul {
-      flex-direction: column;
-      align-items: center;
-  }
-
-  li {
-      margin-right: 0;
-      margin-bottom: 10px;
-  }
-
-  .hero {
-      padding: 80px 0;
-  }
-
-  h1 {
-      font-size: 24px;
-  }
-
-  /* Adjust other styles as needed for smaller screens */
-}
-
-/* Media query for screens with a maximum width of 480px */
-@media screen and (max-width: 480px) {
-  /* Styles for even smaller screens */
-  header {
-      padding: 5px 0;
-  }
-
-  .logo {
-      font-size: 18px;
-  }
-
-  .btn {
-      font-size: 14px;
-  }
-
-  /* Adjust other styles as needed for very small screens */
-}
