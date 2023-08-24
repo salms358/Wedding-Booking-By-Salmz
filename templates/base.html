@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'style.css' %}">
     <script src="https://kit.fontawesome.com/26caacf38c.js" crossorigin="anonymous"></script>
+    <script src="{% static 'script.js' %}"></script>
     <title>Wedding Booking System</title>
 </head>
 <body>
@@ -19,6 +20,18 @@
           
             <!-- Navigation links -->
             <div class="container">
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+                        {% for message in messages %}
+                        <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
+                            {{ message | safe }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        {% endfor %}
+                        </div>
+                    </div>
+                </div>
+              
                 <ul class="fonts">
                     <a href="{% url 'Booking:index' %}" id="logo">
                         <h1 src="{% static 'Booking:index' %}" alt="Logo">WBBS</h1>
@@ -41,8 +54,9 @@
             </div>
         </nav>
     </header>
+  
 
-    <!-- Content goes here -->
+    
     {% block content %}
     {% endblock %}
 
@@ -50,5 +64,6 @@
     <footer>
         <!-- Footer content -->
     </footer>
+
 </body>
 </html>

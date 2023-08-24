@@ -13,6 +13,7 @@ from .email_utils import send_verification_email, send_custom_email
 from allauth.account.models import EmailAddress
 from allauth.account.utils import send_email_confirmation
 from django.http import JsonResponse
+from django.utils import timezone
 
 
 class RegisterView(View):
@@ -85,6 +86,7 @@ def create_booking(request):
             # Save the booking object with the user
             booking.user = request.user
             booking.save()
+            messages.success(request, 'Booking successfully created')
             return redirect('Booking:view_booking')
     else:
         booking_form = BookingForm()
@@ -108,33 +110,36 @@ class update_booking(View):
         return render(request,"update_booking.html",{'form': form, 'booking': booking})
 
 
-    def post(self, request, *args, **kwargs):
-            if not request.user.is_superuser:
-                messages.error(request, 'Sorry, only store owners can do that.')
-                return redirect(reverse('index.html'))
+    def post(self, request, booking_id, *args, **kwargs):
+        booking = get_object_or_404(Booking, pk=booking_id)
+        if (booking.user != self.request.user) and (not self.request.user.is_superuser):
+            messages.error(request, 'You do not have permission to update this booking.')
+            return redirect('Booking:view_booking')
 
-            form = BookingForm(request.POST, request.FILES)
-            if form.is_valid():
-                booking_date = form.cleaned_data.get('booking_date')
+        form = BookingForm(request.POST, instance=booking)
+        if form.is_valid():
+            booking_date = form.cleaned_data.get('booking_date')
 
-                if booking_date < timezone.now().date():
-                    form.add_error('booking_date', 'Invalid date. Please select a future date.')
-                else:
-                    booking = form.save(commit=False)
-                    booking.user = self.request.user
-                    booking.save()
-                    messages.success(request, 'Booking successfully created')
-                    return redirect(reverse('index.html'))
+            if booking_date < timezone.now().date():
+                form.add_error('booking_date', 'Invalid date. Please select a future date.')
             else:
-                messages.error(request, 'Failedto create booking.')
-                form = BookingForm()
-                return render(request, 'update_booking.html', {'form': form})
+                form.save()
+                messages.success(request, 'Booking successfully updated')
+                return redirect('Booking:view_booking')
+        else:
+            messages.error(request, 'Failed to update booking. Please check your input.')
+
+        return render(request, 'update_booking.html', {'form': form, 'booking': booking})
 
 class D_booking(DeleteView):
     model = Booking
     pk_url_kwarg = "booking_id"
     success_url = reverse_lazy("Booking:index")  # Redirect to the homepage
     template_name = "delete_booking.html"
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(request, 'Booking deleted successfully.')  
+        return super().delete(request, *args, **kwargs)
 
 
 class CustomPasswordResetView(PasswordResetView):

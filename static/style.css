@@ -234,7 +234,10 @@ form button {
     border-color: #bd2130;
   } 
 
-
+.container {
+  font-family: Oswald;
+  color: #007bff;
+}
 
 
   @media (max-width: 768px) {
