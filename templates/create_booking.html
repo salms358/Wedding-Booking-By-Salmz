@@ -1,13 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Create Booking</h1>
-    <form method="POST" class="booking_formz">
-        {% csrf_token %}
-        {{ booking_form }}
-  
-
-        <input type="submit" value="Create Booking">
-    </form>
-
+<div class="container">
+    <div class="booking-form">
+        <h1>Create Booking</h1>
+        <form method="POST">
+            {% csrf_token %}
+            {{ booking_form }}
+            <input type="submit" value="Create Booking">
+        </form>
+    </div>
+</div>
 {% endblock %}

@@ -14,19 +14,31 @@ body {
     font-weight: 200;
     color:rgba(36, 89, 162, 0.847);
     overflow-x: hidden;
+    background-size: cover;
+    
+    margin-top: 100px;  /* Pushes down the content by 70px */
+   }
+  h1 {
+    color: #2946a8;
+  }
+   
     
    
-}
+
 
 /* Add this CSS to your style.css file */
 .nav_bar {
+  width:100%;
+  position:fixed;
   display: flex; /* Use flexbox to arrange items horizontally */
   justify-content: space-between; /* Space out items evenly */
   align-items: center; /* Vertically align items */
   padding: 10px 20px; /* Add padding for spacing */
   background-color: #333; /* Set the background color */
   color: white; /* Set the text color */
+  top:0;
 }
+
 
 .nav_bar ul {
     display: flex; /* Use flexbox for the list */
@@ -45,12 +57,16 @@ body {
     padding: 10px; /* Add padding around links */
 }
 
-#logo {
+.logo {
     width: 100px; /* Set the logo width */
-    height: 100px; /* Set the logo height */
-    background-color: #f2f2f2; /* Set a background color for the logo */
-    /* Add your logo image or styling here */
+    height: 100px;
+    color: #f9f9f9;
+    float: left;
+    display: flex;
+ 
+    
 }
+
 
 
 .services {
@@ -79,49 +95,45 @@ body {
     flex-direction: row;
     margin-bottom: 10%;
   }
- .hero-image {
-  height: 150px;
-  width: 150px;
-  border-radius: 10%;
-  text-align: center;
-  display: block;
-  margin: 0 auto;
-    
- }
- .hounslow_hall {
-  height: 150px;
-  width: 150px;
-  border-radius: 10%;
-  text-align: center;
-  display: block;
-  margin: 0 auto;
-    
-    
-
- }
- .slough_hall {
-  height: 150px;
-  width: 150px;
-  border-radius: 10%;
-  text-align: center;
-  display: block;
-  margin: 0 auto;
-    
- }
- 
-.venues{
-  display: flex;
-  gap: 260px;
-    
+  .hero-image {
+    height: 150px;
+    width: 150px;
+    border-radius: 10%;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+      
+   }
+   .hounslow_hall {
+    height: 150px;
+    width: 150px;
+    border-radius: 10%;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+      
+      
+  
+   }
+   .slough_hall {
+    height: 150px;
+    width: 150px;
+    border-radius: 10%;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+      
+   }
    
-}
+  .venues{
+    display: flex;
+    gap: 260px; 
+  }
+
 .container {
     text-align: center;
   }
 
-  h1 {
-    color: #333;
-  }
 
   p {
     color: #777;
@@ -129,53 +141,88 @@ body {
   .footer {
     display: block;
     width: 100%;
-    position: relative; 
     text-align: left;
     text-align: center;
-    padding-top: 90px;
+    padding-bottom: 150px;
+    bottom: 0;
+    padding: 20px;
+ 
   }
+
+  .banner {
+    margin-top: 200px;
+  }
+  .About_page {
+    margin-top: 200px;
+  }
+  .booking_formz {
+    margin-top: 200px;
+  }
+
+
   .footer a {
     font-size: 200%;
     padding: 0 100px;
     color: #4b5054;
     
    }
-   .booking_formz {
-    
-      position: absolute;
-      top: 5%;
-      left: 0;
-      right: 0;
-      bottom: 5%;
-      margin: auto;
-      background-color: #1d446b;
-      max-width: 200px;
-      padding: 20px;
-      color: white;
-      text-align: center;
-  
-   }
-   #video-container {
-    position: relative;
-    width: 100%;
-    height: 0;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio for video */
-    overflow: hidden;
+/* Styles for the container */
+.container {
+  width: 90%; /* 75% of the viewport width */
+  margin: 0 auto; /* Center the container horizontally */
+  padding: 20px; /* Add some padding for spacing */
+}
+
+/* Styles for the booking form */
+.booking-form {
+  background-color: #f9f9f9; /* Background color for the form */
+  padding: 20px; /* Add padding to the form */
+  border-radius: 10px; /* Rounded corners for the form */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a shadow for depth */
+}
+
+/* Styles for form elements (adjust as needed) */
+.booking-form label {
+  font-weight: bold;
+}
+
+.booking-form input[type="text"],
+.booking-form input[type="email"],
+.booking-form textarea {
+    width: 100%; /* Set the width to 100% to make it fill the container */
+    padding: 10px; /* Add padding for spacing */
+    margin-bottom: 15px; /* Add margin for spacing between fields */
+    border: 1px solid #ccc; /* Add a border for input fields */
+    border-radius: 5px; /* Rounded corners for input fields */
+}
+.view {
+  padding-top: 100px;
+}
+
+
+#video-container {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio for video */
+  overflow: hidden;
+  z-index: -1; /* Send the video container to the background */
 }
 
 iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 50%;
-    text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 75%; /* Adjust to fill the video container */
+  text-align: center;
 }
 
 #overlay {
     position: absolute;
-    top: 0;
     left: 0;
+    bottom: 15%;
+
     width: 100%;
     height: 100%;
     display: flex;
@@ -205,17 +252,45 @@ form button {
     cursor: pointer;
 }
 #review-form {
-  position: absolute;
-  top: 5%;
-  left: 0;
-  right: 0;
-  bottom: 5%;
-  margin: auto;
-  max-width: 150px;
+  width: 60%; /* Default width for larger screens */
   padding: 20px;
-  color: white;
+  background-color: rgba(63, 58, 39, 0);
+  border-radius: 10px;
   text-align: center;
+}
 
+/* Additional CSS for form elements */
+#review-form label {
+  display: block; /* Display labels as block elements */
+  margin-bottom: 10px; /* Add spacing between labels */
+}
+
+#review-form input[type="text"],
+#review-form input[type="email"],
+#review-form textarea {
+  width: 100%; /* Make form fields take up the full width */
+  padding: 10px;
+  margin-bottom: 15px; /* Add spacing between form fields */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#review-form p {
+  text-align: center; /* Center-align the checkbox paragraph */
+}
+
+#review-form input[type="checkbox"] {
+  display: inline-block; /* Display the checkbox inline */
+  margin-right: 5px; /* Add spacing to the right of the checkbox */
+}
+
+#review-form input[type="submit"] {
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 
@@ -238,10 +313,146 @@ form button {
   font-family: Oswald;
   color: #007bff;
 }
+@media (max-width:481px) {
+  .nav_bar {
+    flex-direction: column; /* Stack content vertically */
+    align-items:center; /* Align content to the left */
+  
+}
+
+.nav_bar ul {
+    flex-direction: column; /* Stack navigation links vertically */
+    align-items:center; /* Align links to the left */
+}
+
+.nav_bar li {
+    margin-right: 0; /* Remove right margin for list items */
+    margin-bottom: 10px; /* Add bottom margin to separate items */
+}
+.banner {
+  padding-top: 350px;
+}
+.view {
+  padding-top: 200px;
+}
+.booking-form {
+  padding-top: 200px;
+}
+
+.About_page {
+  margin-top: 400px;
+}
+#review-form {
+  width: 90%; /* Adjust the width for smaller screens */
+  padding: 10px; /* Increase padding for better touch interactions */
+  color: #cccccc00;
+}
+
+/* Reduce font size for smaller screens */
+#review-form label {
+  font-size: 14px;
+}
+
+#review-form input[type="text"],
+#review-form input[type="email"],
+#review-form textarea {
+  font-size: 12px;
+  padding: 2px;
+  margin-bottom: 2px; /* Reduce margin for tighter spacing */
+}
+
+#review-form input[type="submit"] {
+  font-size: 16px;
+  padding: 1px 1px; /* Adjust padding for the submit button */
+}
+
+
+
+}
+
 
 
   @media (max-width: 768px) {
-    .nav-bar {
+    .nav_bar {
       justify-content: center; /* Center the navigation items */
     }
+    #video-container {
+      padding-bottom: 75%; /* Adjust the aspect ratio for smaller screens */
+      align-items: center;
   }
+  .venues {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    gap: 10px; /* Adjust the gap between stacked images */
+}
+
+  /* Adjust the styling for individual images if needed */
+  .hounslow_hall,
+  .slough_hall,
+  .hero-image {
+      height: 150px;
+      width: 150px;
+      border-radius: 10%;
+      text-align: center;
+      display: block;
+      margin: 0 auto;
+  }
+  #review-form {
+    width: 80%; /* Adjust the width for smaller screens */
+  }
+
+
+
+  }
+
+  #msg {
+    margin-top: 80px;  /* Adjust this value based on your needs */
+  }
+  
+ /* Media query for iPad screens */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  #review-form {
+      width: 60%; /* Adjust the width for iPad screens */
+      padding: 20px; /* Increase padding for better tablet interactions */
+  }
+
+  /* Adjust font size and padding for form fields on iPad */
+  #review-form label {
+      font-size: 16px;
+  }
+
+  #review-form input[type="text"],
+  #review-form input[type="email"],
+  #review-form textarea {
+      font-size: 14px;
+      padding: 8px; /* Adjust padding for form fields on iPad */
+      margin-bottom: 10px; /* Adjust margin for spacing on iPad */
+  }
+
+  #review-form input[type="submit"] {
+      font-size: 18px;
+      padding: 10px 20px; /* Adjust padding for the submit button on iPad */
+  }
+  #video-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio for video */
+    overflow: hidden;
+}
+
+iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+}
