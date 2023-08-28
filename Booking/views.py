@@ -14,6 +14,7 @@ from allauth.account.models import EmailAddress
 from allauth.account.utils import send_email_confirmation
 from django.http import JsonResponse
 from django.utils import timezone
+from django.http import JsonResponse
 
 
 class RegisterView(View):
@@ -113,6 +114,7 @@ class update_booking(View):
 
     def post(self, request, booking_id, *args, **kwargs):
         booking = get_object_or_404(Booking, pk=booking_id)
+        
         if (booking.user != self.request.user) and (not self.request.user.is_superuser):
             messages.error(request, 'You do not have permission to update this booking.')
             return redirect('Booking:view_booking')
@@ -131,6 +133,9 @@ class update_booking(View):
             messages.error(request, 'Failed to update booking. Please check your input.')
 
         return render(request, 'update_booking.html', {'form': form, 'booking': booking})
+
+
+
 
 class D_booking(DeleteView):
     model = Booking

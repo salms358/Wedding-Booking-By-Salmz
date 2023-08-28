@@ -69,13 +69,18 @@ class BookingForm(forms.ModelForm):
         booking_time = cleaned_data.get('booking_time')
 
         # Check for existing bookings on the same date and time
+        booking_to_update = self.instance
         existing_bookings = Booking.objects.filter(
             booking_date=booking_date,
             booking_time=booking_time
         )
+        print(existing_bookings)
+        
 
-        if existing_bookings.exists():
-            raise forms.ValidationError('This date and time are already booked.')
+
+        if existing_bookings.exists() and booking_to_update not in existing_bookings:
+            raise forms.ValidationError('This date and time are already booked by another booking.')
+
 
         return cleaned_data
 
