@@ -61,7 +61,6 @@ body {
     width: 100px; /* Set the logo width */
     height: 100px;
     color: #f9f9f9;
-    float: left;
     display: flex;
  
     
@@ -130,7 +129,7 @@ body {
     gap: 260px; 
   }
 
-.container {
+.container2 {
     text-align: center;
   }
 
@@ -167,7 +166,7 @@ body {
     
    }
 /* Styles for the container */
-.container {
+.container2 {
   width: 90%; /* 75% of the viewport width */
   margin: 0 auto; /* Center the container horizontally */
   padding: 20px; /* Add some padding for spacing */
@@ -257,6 +256,9 @@ form button {
   background-color: rgba(63, 58, 39, 0);
   border-radius: 10px;
   text-align: center;
+}
+.fade {
+  padding-top: 100px;
 }
 
 /* Additional CSS for form elements */

@@ -16,53 +16,61 @@
     <header>
         <!-- Navigation bar -->
         <nav id="menu" class="nav_bar">
+            <ul class="fonts">
+                <li>
+                    <a href="{% url 'Booking:index' %}" class="logo">
+                        <h1>WBBS</h1>
+                    </a>
+                </li>
+                <li><a href="{% url 'Booking:index' %}">Home</a></li>
+                <li><a href="{% url 'Booking:about_us' %}">About Us!</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'Booking:view_booking' %}">View Bookings</a></li>
+                <li><a href="{% url 'Booking:create_booking' %}">Create Booking</a></li>
+                <li><a href="{% url 'account_logout' %}">Logout</a></li>
+                {% else %}
+                <li><a href="{% url 'account_login' %}">Login</a></li>
+                {% endif %}
+            </ul>                              
+        </nav>
+    </header>
+    
                 
           
             <!-- Navigation links -->
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 offset-md-2">
-                        {% for message in messages %}
-                        <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
-                            {{ message | safe }}
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                        {% endfor %}
-                        </div>
-                    </div>
-                </div>
-              
-                <ul class="fonts">
-                    <a href="{% url 'Booking:index' %}" class="logo">
-                        <h1 src="{% static 'Booking:index' %}" alt="Logo">WBBS</h1>
-                    </a>
-                    <li><a href="{% url 'Booking:index' %}">Home</a></li>
-                    <li><a href="{% url 'Booking:about_us' %}">About Us!</a></li>
-                    {% if user.is_authenticated %}
-                    <li><a href="{% url 'Booking:view_booking' %}">View Bookings</a></li>
-                    <li><a href="{% url 'Booking:create_booking' %}">Create Booking</a></li>
-                    <li><a href="{% url 'account_logout' %}">Logout</a></li>
-                    {% else %}
-                    <li><a href="{% url 'account_login' %}">Login</a></li>
-                    {% endif %}
-                
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                {% for message in messages %}
+                {% if 'container' in message.tags %}
                     
-
-
-
-                </ul>
+                    <div class="fade" id="msg" role="alert">
+                        {{ message | safe }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% else %}
+                 
+                    <div class="fade" role="alert" id="msg2">
+                        {{ message | safe }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endif %}
+            {% endfor %}
+            
+                
             </div>
-        </nav>
-    </header>
+        </div>
+    </div>
+    
     <script>
         $(document).ready(function() {
-            var rows = $('.row'); // Select all elements with the class "row"
+            var containers = $('.container');
             
-            if (rows.length) {
-                rows.show();
+            if (containers.length) {
+                containers.show();
                 
                 setTimeout(function() {
-                    rows.fadeOut();
+                    containers.fadeOut();
                 }, 5000);
             }
         });
@@ -73,11 +81,6 @@
     
     {% block content %}
     {% endblock %}
-
-    <!-- Footer -->
-    <footer>
-        <!-- Footer content -->
-    </footer>
 
 </body>
 </html>

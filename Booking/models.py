@@ -1,18 +1,7 @@
-# models.py
-
 from django.db import models
 from django.contrib.auth.models import User
 from .venue import Venue
 from django.core.validators import MinValueValidator, MaxValueValidator
-
-
-
-
-class Location(models.Model):
-    name = models.CharField(max_length=100)
-    street_address = models.CharField(max_length=100)
-    city = models.CharField(max_length=100)
-    postal_code = models.CharField(max_length=20)
 
 
 class Booking(models.Model):
@@ -26,6 +15,8 @@ class Booking(models.Model):
     theme = models.CharField(max_length=100, blank=True)
     group_size = models.PositiveIntegerField(default=100, validators=[MinValueValidator(100), MaxValueValidator(500)])
     # Other fields of the Booking model
+
+
 class Register(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, primary_key=True)

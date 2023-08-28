@@ -78,6 +78,7 @@ class CustomLogoutView(LogoutView):
 
 
 # CRUD functionality
+@ login_required
 def create_booking(request):
     if request.method == 'POST':
         booking_form = BookingForm(request.POST)
