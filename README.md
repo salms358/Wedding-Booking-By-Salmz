@@ -5,6 +5,14 @@ Users are able to book in the venue view the booking as well as update the booki
 
 ## User Experience (UX)
 A user to Wedding Booking By Salmz would be the couple getting married and their families looking for an easy way to help their loved ones book a venue for their special day.
+### User stories
+I used github as my method of agile methodology. To keep track of tasks so i knew which tasks i had to prioritise and what I had left to do. When working on something I will move it to in progress. When finished the task would be moved to the completed section.
+
+![USER STORIES](https://github.com/salms358/Wedding-Booking-By-Salmz/assets/119611403/741beb45-d513-44be-ad99-71c086cfd9eb)
+
+
+
+
 # 1.1 Strategy
 ## Project goals 
 The main goal of this website is to allow the user to create an account  then have the authorisation to create a booking,view the booking, update and delete the booking.
@@ -44,7 +52,7 @@ Ability to cancel a booking | 3 | 4
 Multiple table occupancies | 4 | 1
 Avoid double bookings | 4 | 1
 
-Total | 45 | 39
+Total | 44 | 38
 
 ## Scope 
 The main functions iused are listed in phase 1 and 2 phase 1 being the more important features like the CRUD functionality.
@@ -264,6 +272,33 @@ Both of these links are working correctly when clicked on and the user can succe
 
 ![delete booking test](https://github.com/salms358/Wedding-Booking-By-Salmz/assets/119611403/cd8c2bef-fca8-4044-957c-df6eb4356bac)
 
+# Known Bugs
+ - there is one bug where the the success messages bring the padding of everything else down until they disappear.
+
+ - When the user is updating their booking and they press update booking without making any changes it still says updated booking instead of something like "No changes made".
+ - When running my code through a pylinter on the forms.py file there is a line that is said to be too long but there is not much i can do in order to make it shorter i attempted it and I beleive its ok now
+
+
+ ## Content 
+  Greenford hall picture: https://i.pinimg.com/originals/61/7e/79/617e79acb4346547953dbdec5f1a5fe4.jpg
+
+  Hownslow hall pic: https://th.bing.com/th/id/OIP.GzHwjWB706KfnJkhXw4QuAAAAA?pid=ImgDet&rs=1
+
+  slough hall picture: https://th.bing.com/th/id/OIP.2gMm1iIxcx8fLC6CVFTdhQHaE7?pid=ImgDet&w=180&h=180&c=7&dpr=1.3
+
+  social media icons: https://fontawesome.com/
+
+  ## References
+
+  I used this project for inspiration which helped me build the backend of my app i used this for my view.py as well as an idea for my database models: https://github.com/iKelvvv/MS4/tree/main
+
+  This project gave me an idea on how to set up my form as well as the idea of the small images going across the page
+  : https://github.com/AliOKeeffe/mindyoga
+
+  w3schools: https://www.w3schools.com/
+
+  Bootsrap : https://getbootstrap.com/
+
 ## Log in/ signup pages
 The functionality of these pages are up to par they are both responsive. The validation for both are working. The sign up page is also responsive the validation is in check and the colours are contrasting therefore improving accessibility.
 Log In Page:
@@ -274,6 +309,27 @@ Log Out Page:
 Sign Up Page:
 ![sign up page test](https://github.com/salms358/Wedding-Booking-By-Salmz/assets/119611403/1217b161-3dd9-404d-9574-8b06f1875950)
 
+# Final Product
+
+
+![main page](https://github.com/salms358/Wedding-Booking-By-Salmz/assets/119611403/50ebee36-fbb6-40b8-a930-8c57a170ec60)
+
+
+![view bookings page](https://github.com/salms358/Wedding-Booking-By-Salmz/assets/119611403/ec81570c-4f75-4571-aa0a-69b662434e90)
+
+
+![About Us page](https://github.com/salms358/Wedding-Booking-By-Salmz/assets/119611403/6af20ac7-37f0-4370-843f-dd9c6df396bf)
+
+
+![create booking page](https://github.com/salms358/Wedding-Booking-By-Salmz/assets/119611403/507f095a-b391-4ec5-923a-b58462324ed7)
+
+![signup page](https://github.com/salms358/Wedding-Booking-By-Salmz/assets/119611403/305e6bdd-8356-486f-b60d-9b94e8ffafa4)
+
+
+![sign in page](https://github.com/salms358/Wedding-Booking-By-Salmz/assets/119611403/8f3a191f-a896-4684-b6b2-24a986afc10c)
+
+
+![signout page](https://github.com/salms358/Wedding-Booking-By-Salmz/assets/119611403/ec8f9472-7d81-4048-ada7-0ee43d8cc112)
 
 # Developmental cycle 
 ## Project Checklist

@@ -82,21 +82,18 @@ class BookingForm(forms.ModelForm):
         )
 
         if existing_bookings.exists() and booking_to_update not in existing_bookings:
-            raise forms.ValidationError('This date and time are already booked by another booking.')
+            raise forms.ValidationError('This date and time are already'
+                                        ' booked by another booking.')
 
         return cleaned_data
 
     class Meta:
         model = Booking
-        fields = ['venue', 'customer_name', 'booking_date', 'booking_time', 'email', 'phone_number', 'theme', 'group_size']
+        fields = ['venue', 'customer_name', 'booking_date', 'booking_time',
+                  'email', 'phone_number', 'theme', 'group_size']
 
 
 class RegisteringAccount(forms.ModelForm):
     class Meta:
         model = Register
         fields = ['user', 'first_name', 'last_name', 'phone_number']
-
-
-
-        
-
