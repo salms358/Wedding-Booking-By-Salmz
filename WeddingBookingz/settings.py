@@ -28,9 +28,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['8000-salms358-weddingbooking-pz766wagauz.ws-eu104.gitpod.io']
+ALLOWED_HOSTS = ['wedding-bookingz-4f2f75608526.herokuapp.com',
+                 'localhost', 'wedding-bookingz-4f2f75608526.herokuapp.com']
 
 
 # Application definition
