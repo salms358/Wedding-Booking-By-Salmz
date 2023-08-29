@@ -14,7 +14,7 @@ from pathlib import Path
 import os
 import dj_database_url
 from django.conf import settings
-from storages.backends import cloudinary
+
 
 if os.path.isfile('env.py'):
     import env
@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'crispy_forms'
     'Booking',
 ]
+
 SITE_ID = 1
 
 LOGIN_REDIRECT_URL = '/'
