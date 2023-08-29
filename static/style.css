@@ -243,7 +243,7 @@ iframe {
 }
 
 form button {
-    background-color: #333;
+    background-color: #2e25a4;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -296,24 +296,16 @@ form button {
 }
 
 
-/* Additional styling for form fields, button, etc. */
-
-
-
-  /* Customize button styles */
-  .btn-danger {
-    background-color: #dc3545;
-    border-color: #dc3545;
-  }
-
-  .btn-danger:hover {
-    background-color: #c82333;
-    border-color: #bd2130;
-  } 
-
 .container {
   font-family: Oswald;
   color: #007bff;
+}
+.sf {
+  padding-top: 50px;
+  font-family: Oswald;
+  color: #007bff;
+
+
 }
 @media (max-width:481px) {
   .nav_bar {

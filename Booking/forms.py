@@ -1,4 +1,3 @@
-
 from django import forms
 from .models import Booking
 import datetime
@@ -7,6 +6,7 @@ from django.utils.translation import gettext_lazy as _
 from .models import Register
 from django.utils import timezone
 from datetime import timedelta
+
 
 def validate_date(date):
     if not date:
@@ -25,35 +25,40 @@ def validate_date(date):
             code='invalid_date'
         )
 
+
 VENUE_CHOICES = [
     ('Nawaabs Greenford', 'Nawaabs Greenford'),
     ('Slough Banqueting Hall', 'Slough Banqueting Hall'),
     ('Hounslow Banqueting Hall', 'Hounslow Banqueting Hall'),
 ]
 
+
 class BookingForm(forms.ModelForm):
-    venue = forms.ChoiceField(choices=VENUE_CHOICES, widget=forms.Select(attrs={'class': 'form-control'}))
+    venue = forms.ChoiceField(
+        choices=VENUE_CHOICES,
+        widget=forms.Select(attrs={'class': 'form-control'})
+        )
     booking_date = forms.DateField(
         label=_('Booking Date'),
         widget=forms.DateInput(attrs={'type': 'date'}),
         validators=[validate_date],
-    )
+        )
+
     def clean_booking_date(self):
         booking_date = self.cleaned_data.get('booking_date')
         if booking_date < timezone.now().date():
             raise forms.ValidationError("Booking date cannot be in the past.")
-        
+
         min_advance_booking_date = timezone.now().date() + timedelta(days=5)
         if booking_date < min_advance_booking_date:
             raise forms.ValidationError("Book at least 5 days in advance.")
-        
+
         return booking_date
 
     def clean_booking_time(self):
         booking_time = self.cleaned_data.get('booking_time')
-        if booking_time < datetime.time(14, 0) or booking_time > datetime.time(18, 0):
-            raise forms.ValidationError("Booking time should be between 14:00 and 18:00.")
-        
+        if not datetime.time(14, 0) <= booking_time <= datetime.time(18, 0):
+            raise forms.ValidationError("Booking are between 14:00 and 18:00.")
 
         return booking_time
 
@@ -61,8 +66,9 @@ class BookingForm(forms.ModelForm):
         group_size = self.cleaned_data.get("group_size")
         print(group_size)  # Add this line to check the value
         if group_size < 100 or group_size > 500:
-            raise forms.ValidationError("Group size must be between 100 and 500.")
+            raise forms.ValidationError("Group size are between 100 and 500.")
         return group_size
+
     def clean(self):
         cleaned_data = super().clean()
         booking_date = cleaned_data.get('booking_date')
@@ -74,18 +80,11 @@ class BookingForm(forms.ModelForm):
             booking_date=booking_date,
             booking_time=booking_time
         )
-        print(existing_bookings)
-        
-
 
         if existing_bookings.exists() and booking_to_update not in existing_bookings:
             raise forms.ValidationError('This date and time are already booked by another booking.')
 
-
         return cleaned_data
-
-
-
 
     class Meta:
         model = Booking
@@ -96,6 +95,7 @@ class RegisteringAccount(forms.ModelForm):
     class Meta:
         model = Register
         fields = ['user', 'first_name', 'last_name', 'phone_number']
+
 
 
         
