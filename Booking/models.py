@@ -3,7 +3,9 @@ from django.contrib.auth.models import User
 from .venue import Venue
 from django.core.validators import MinValueValidator, MaxValueValidator
 
-
+"""
+The database models for the booking form and the registration one is not used
+"""
 class Booking(models.Model):
     user = models.OneToOneField(User,
                                 on_delete=models.CASCADE, primary_key=True)
@@ -16,7 +18,7 @@ class Booking(models.Model):
     theme = models.CharField(max_length=100, blank=True)
     group_size = models.PositiveIntegerField(default=100, 
     validators=[MinValueValidator(100), MaxValueValidator(500)])
-    # Other fields of the Booking model
+   
 
 
 class Register(models.Model):

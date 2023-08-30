@@ -7,6 +7,10 @@ from .models import Register
 from django.utils import timezone
 from datetime import timedelta
 
+"""
+Allows the user to choose the appropiate date for wedding
+
+"""
 
 def validate_date(date):
     if not date:
@@ -24,7 +28,9 @@ def validate_date(date):
             _('Enter a valid date.'),
             code='invalid_date'
         )
-
+"""
+Selection of venues for user to choose from
+"""
 
 VENUE_CHOICES = [
     ('Nawaabs Greenford', 'Nawaabs Greenford'),
@@ -32,7 +38,9 @@ VENUE_CHOICES = [
     ('Hounslow Banqueting Hall', 'Hounslow Banqueting Hall'),
 ]
 
-
+"""
+Booking form 
+"""
 class BookingForm(forms.ModelForm):
     venue = forms.ChoiceField(
         choices=VENUE_CHOICES,
@@ -43,6 +51,10 @@ class BookingForm(forms.ModelForm):
         widget=forms.DateInput(attrs={'type': 'date'}),
         validators=[validate_date],
         )
+    """
+    Validation for the date so users choose a date thats not in the past 
+    and the date has to be 5 days in advance to allow for the venue preparation
+    """
 
     def clean_booking_date(self):
         booking_date = self.cleaned_data.get('booking_date')
@@ -61,6 +73,10 @@ class BookingForm(forms.ModelForm):
             raise forms.ValidationError("Booking are between 14:00 and 18:00.")
 
         return booking_time
+    """
+    Makes sure the amount of guests range between 100 and 500 guests
+
+    """
 
     def group_capacity(self):
         group_size = self.cleaned_data.get("group_size")
@@ -86,13 +102,19 @@ class BookingForm(forms.ModelForm):
                                         ' booked by another booking.')
 
         return cleaned_data
-
+    """
+    These are the fields of the Booking form from the models.py file 
+    in a Meta class.
+    """
     class Meta:
         model = Booking
         fields = ['venue', 'customer_name', 'booking_date', 'booking_time',
                   'email', 'phone_number', 'theme', 'group_size']
 
+"""
+This class was made before I added allauth, I found that I didnt need to use it
 
+"""
 class RegisteringAccount(forms.ModelForm):
     class Meta:
         model = Register

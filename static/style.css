@@ -198,37 +198,6 @@ body {
   padding-top: 100px;
 }
 
-
-#video-container {
-  position: relative;
-  width: 100%;
-  height: 0;
-  padding-bottom: 56.25%; /* 16:9 aspect ratio for video */
-  overflow: hidden;
-  z-index: -1; /* Send the video container to the background */
-}
-
-iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 75%; /* Adjust to fill the video container */
-  text-align: center;
-}
-
-#overlay {
-    position: absolute;
-    left: 0;
-    bottom: 15%;
-
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 #form-container {
     width: 60%;
     padding: 20px;
@@ -250,51 +219,10 @@ form button {
     border-radius: 5px;
     cursor: pointer;
 }
-#review-form {
-  width: 60%; /* Default width for larger screens */
-  padding: 20px;
-  background-color: rgba(63, 58, 39, 0);
-  border-radius: 10px;
-  text-align: center;
-}
+
 .fade {
   padding-top: 100px;
 }
-
-/* Additional CSS for form elements */
-#review-form label {
-  display: block; /* Display labels as block elements */
-  margin-bottom: 10px; /* Add spacing between labels */
-}
-
-#review-form input[type="text"],
-#review-form input[type="email"],
-#review-form textarea {
-  width: 100%; /* Make form fields take up the full width */
-  padding: 10px;
-  margin-bottom: 15px; /* Add spacing between form fields */
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-#review-form p {
-  text-align: center; /* Center-align the checkbox paragraph */
-}
-
-#review-form input[type="checkbox"] {
-  display: inline-block; /* Display the checkbox inline */
-  margin-right: 5px; /* Add spacing to the right of the checkbox */
-}
-
-#review-form input[type="submit"] {
-  background-color: #333;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
 
 .container {
   font-family: Oswald;
@@ -320,11 +248,11 @@ form button {
 }
 
 .nav_bar li {
-    margin-right: 0; /* Remove right margin for list items */
-    margin-bottom: 10px; /* Add bottom margin to separate items */
+    margin-right: 0; 
+    margin-bottom: 10px; 
 }
 .banner {
-  padding-top: 350px;
+  padding-top: 250px;
 }
 .view {
   padding-top: 200px;
@@ -333,120 +261,100 @@ form button {
   padding-top: 200px;
 }
 
-.About_page {
-  margin-top: 400px;
-}
-#review-form {
-  width: 90%; /* Adjust the width for smaller screens */
-  padding: 10px; /* Increase padding for better touch interactions */
-  color: #cccccc00;
+.About {
+  margin-top: 100px;
 }
 
-/* Reduce font size for smaller screens */
+.container2 {
+  padding-top: 50px;
+}
+
+
+}
+
+
+
+@media (max-width: 768px) {
+  .nav_bar {
+    justify-content: center; /* Center the navigation items */
+  }
+  #video-container {
+    padding-bottom: 75%; /* Adjust the aspect ratio for smaller screens */
+    align-items: center;
+}
+.venues {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+  gap: 10px; /* Adjust the gap between stacked images */
+}
+
+/* Adjust the styling for individual images if needed */
+.hounslow_hall,
+.slough_hall,
+.hero-image {
+    height: 150px;
+    width: 150px;
+    border-radius: 10%;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+}
+#review-form {
+  width: 80%; /* Adjust the width for smaller screens */
+}
+
+
+
+}
+
+#msg {
+  margin-top: 80px;  /* Adjust this value based on your needs */
+}
+
+/* Media query for iPad screens */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+#review-form {
+    width: 60%; /* Adjust the width for iPad screens */
+    padding: 20px; /* Increase padding for better tablet interactions */
+}
+
+/* Adjust font size and padding for form fields on iPad */
 #review-form label {
-  font-size: 14px;
+    font-size: 16px;
 }
 
 #review-form input[type="text"],
 #review-form input[type="email"],
 #review-form textarea {
-  font-size: 12px;
-  padding: 2px;
-  margin-bottom: 2px; /* Reduce margin for tighter spacing */
+    font-size: 14px;
+    padding: 8px; /* Adjust padding for form fields on iPad */
+    margin-bottom: 10px; /* Adjust margin for spacing on iPad */
 }
 
 #review-form input[type="submit"] {
-  font-size: 16px;
-  padding: 1px 1px; /* Adjust padding for the submit button */
+    font-size: 18px;
+    padding: 10px 20px; /* Adjust padding for the submit button on iPad */
 }
-
-
-
-}
-
-
-
-  @media (max-width: 768px) {
-    .nav_bar {
-      justify-content: center; /* Center the navigation items */
-    }
-    #video-container {
-      padding-bottom: 75%; /* Adjust the aspect ratio for smaller screens */
-      align-items: center;
-  }
-  .venues {
-    display: flex;
-    flex-direction: column; /* Stack items vertically */
-    align-items: center; /* Center items horizontally */
-    gap: 10px; /* Adjust the gap between stacked images */
-}
-
-  /* Adjust the styling for individual images if needed */
-  .hounslow_hall,
-  .slough_hall,
-  .hero-image {
-      height: 150px;
-      width: 150px;
-      border-radius: 10%;
-      text-align: center;
-      display: block;
-      margin: 0 auto;
-  }
-  #review-form {
-    width: 80%; /* Adjust the width for smaller screens */
-  }
-
-
-
-  }
-
-  #msg {
-    margin-top: 80px;  /* Adjust this value based on your needs */
-  }
-  
- /* Media query for iPad screens */
-@media screen and (min-width: 769px) and (max-width: 1024px) {
-  #review-form {
-      width: 60%; /* Adjust the width for iPad screens */
-      padding: 20px; /* Increase padding for better tablet interactions */
-  }
-
-  /* Adjust font size and padding for form fields on iPad */
-  #review-form label {
-      font-size: 16px;
-  }
-
-  #review-form input[type="text"],
-  #review-form input[type="email"],
-  #review-form textarea {
-      font-size: 14px;
-      padding: 8px; /* Adjust padding for form fields on iPad */
-      margin-bottom: 10px; /* Adjust margin for spacing on iPad */
-  }
-
-  #review-form input[type="submit"] {
-      font-size: 18px;
-      padding: 10px 20px; /* Adjust padding for the submit button on iPad */
-  }
-  #video-container {
-    position: relative;
-    width: 100%;
-    height: 0;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio for video */
-    overflow: hidden;
+#video-container {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio for video */
+  overflow: hidden;
 }
 
 iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 }
