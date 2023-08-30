@@ -87,84 +87,87 @@ body {
     transition: background-color 0.3s ease;
   }
   
-  .btn:hover {
-    background-color: #0056b3;
+.btn:hover {
+  background-color: #0056b3;
+}
+.booking_formz {
+  flex-direction: row;
+  margin-bottom: 10%;
+}
+.hero-image {
+  height: 150px;
+  width: 150px;
+  border-radius: 10%;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+    
   }
-  .booking_formz {
-    flex-direction: row;
-    margin-bottom: 10%;
+  .hounslow_hall {
+  height: 150px;
+  width: 150px;
+  border-radius: 10%;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+    
+    
+
   }
-  .hero-image {
-    height: 150px;
-    width: 150px;
-    border-radius: 10%;
-    text-align: center;
-    display: block;
-    margin: 0 auto;
-      
-   }
-   .hounslow_hall {
-    height: 150px;
-    width: 150px;
-    border-radius: 10%;
-    text-align: center;
-    display: block;
-    margin: 0 auto;
-      
-      
+  .slough_hall {
+  height: 150px;
+  width: 150px;
+  border-radius: 10%;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+    
+  }
   
-   }
-   .slough_hall {
-    height: 150px;
-    width: 150px;
-    border-radius: 10%;
-    text-align: center;
-    display: block;
-    margin: 0 auto;
-      
-   }
-   
-  .venues{
-    display: flex;
-    gap: 260px; 
-  }
+.venues{
+  display: flex;
+  gap: 260px; 
+}
 
 .container2 {
-    text-align: center;
-  }
+  text-align: center;
+}
 
 
-  p {
-    color: #777;
-  }
-  .footer {
-    display: block;
-    width: 100%;
-    text-align: left;
-    text-align: center;
-    padding-bottom: 150px;
-    bottom: 0;
-    padding: 20px;
- 
-  }
+p {
+  color: #777;
+}
+.footer {
+  display: block;
+  width: 100%;
+  text-align: left;
+  text-align: center;
+  padding-bottom: 150px;
+  bottom: 0;
+  padding: 20px;
 
-  .banner {
-    margin-top: 200px;
-  }
-  .About_page {
-    margin-top: 200px;
-  }
-  .booking_formz {
-    margin-top: 200px;
-  }
+}
+
+.banner {
+  margin-top: 200px;
+}
+.footer-social {
+  padding-top: 100px;
+}
+.About_page {
+  margin-top: 200px;
+}
+.booking_formz {
+  margin-top: 200px;
+}
 
 
-  .footer a {
-    font-size: 200%;
-    padding: 0 100px;
-    color: #4b5054;
-    
-   }
+.footer a {
+  font-size: 200%;
+  padding: 0 100px;
+  color: #4b5054;
+  
+  }
 /* Styles for the container */
 .container2 {
   width: 90%; /* 75% of the viewport width */
@@ -229,7 +232,7 @@ form button {
   color: #007bff;
 }
 .sf {
-  padding-top: 50px;
+  padding-top: 110px;
   font-family: Oswald;
   color: #007bff;
 
@@ -266,7 +269,7 @@ form button {
 }
 
 .container2 {
-  padding-top: 50px;
+  padding-top: 132px;
 }
 
 
