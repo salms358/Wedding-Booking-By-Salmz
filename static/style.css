@@ -160,7 +160,9 @@ p {
 .booking_formz {
   margin-top: 200px;
 }
-
+.update-booking {
+  padding-top:100px
+}
 
 .footer a {
   font-size: 200%;
@@ -243,6 +245,12 @@ form button {
     flex-direction: column; /* Stack content vertically */
     align-items:center; /* Align content to the left */
   
+}
+.fade{
+  padding-top: 90px;
+}
+.update-booking {
+  padding-top:160px;
 }
 
 .nav_bar ul {
